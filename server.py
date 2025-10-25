@@ -452,17 +452,7 @@ def admin_stats():
 # ============ ЗАПУСК СЕРВЕРА ============
 
 if __name__ == '__main__':
-    # Инициализация БД при первом запуске
-    if not os.path.exists(DATABASE):
-        print("🔧 Создание базы данных...")
-        init_db()
+    port = int(os.environ.get('PORT', 5000))
+    app.run(debug=False, host='0.0.0.0', port=port)
 
-    print("=" * 60)
-    print("🚀 True News Server запущен!")
-    print("=" * 60)
-    print("📍 Адрес: http://localhost:5000")
-    print("📊 База данных: truenews.db")
-    print("🔧 Режим: Development")
-    print("=" * 60)
 
-    app.run(debug=True, host='0.0.0.0', port=5000)
